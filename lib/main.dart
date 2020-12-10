@@ -1,8 +1,7 @@
-import 'package:hello_world_2/cart.vm.dart';
 import 'package:hello_world_2/home.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hello_world_2/view_models/cart.vm.dart';
 import 'package:provider/provider.dart' show ChangeNotifierProvider;
 
 void main() async {
