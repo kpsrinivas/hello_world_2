@@ -12,7 +12,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      darkTheme: ThemeData.dark(),
+      darkTheme: ThemeData.light(),
       title: 'Compass Example',
       home: ChangeNotifierProvider<CartViewModel>(
           create: (_) => CartViewModel(), child: Home()),

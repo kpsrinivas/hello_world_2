@@ -44,7 +44,7 @@ class PageOne extends StatelessWidget {
                           Text(
                             data[i].name,
                             style:
-                                TextStyle(fontSize: 16.0, color: Colors.white),
+                                TextStyle(fontSize: 16.0, color: Colors.black),
                           ),
                           SizedBox(
                             height: 2.0,
@@ -56,7 +56,7 @@ class PageOne extends StatelessWidget {
                               Text(
                                 data[i].price,
                                 style: TextStyle(
-                                    fontSize: 13.0, color: Colors.white60),
+                                    fontSize: 13.0, color: Colors.black54),
                               ),
                               SizedBox(
                                 width: 8.0,
@@ -67,7 +67,6 @@ class PageOne extends StatelessWidget {
                                     return next == data[i].id;
                                   },
                                   builder: (context, model, child) {
-                                    print("test");
                                     return AddCartButton(
                                       itemId: data[i].id,
                                     );

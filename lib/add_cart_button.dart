@@ -26,8 +26,9 @@ class AddCartButton extends StatelessWidget {
       icon = Icons.add;
       callFunction = model.addToCart;
     }
+
     return RaisedButton(
-      color: Colors.black87,
+      color: Colors.white24,
       child: this.type == AddCartButtonType.text ? Text(text) : Icon(icon),
       onPressed: () {
         callFunction(this.itemId);

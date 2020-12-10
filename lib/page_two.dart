@@ -42,7 +42,7 @@ class PageTwo extends StatelessWidget {
                       children: [
                         Text(
                           data[index].name,
-                          style: TextStyle(fontSize: 16.0, color: Colors.white),
+                          style: TextStyle(fontSize: 16.0, color: Colors.black),
                         ),
                         SizedBox(
                           height: 10.0,
@@ -50,7 +50,7 @@ class PageTwo extends StatelessWidget {
                         Text(
                           data[index].price,
                           style:
-                              TextStyle(fontSize: 13.0, color: Colors.white60),
+                              TextStyle(fontSize: 13.0, color: Colors.black54),
                         ),
                         SizedBox(
                           height: 5.0,
