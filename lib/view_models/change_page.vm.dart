@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ChangePageViewModel extends ChangeNotifier {
+class ChangePageViewModel with ChangeNotifier {
   int index;
   int selectedPage = 0;
 
