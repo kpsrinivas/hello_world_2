@@ -4,7 +4,7 @@ import 'package:hello_world_2/data/data.dart';
 
 import 'package:hello_world_2/view_models/change_page.vm.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart' show Provider, Consumer;
+import 'package:provider/provider.dart' show Provider, Selector;
 
 class PageOne extends StatelessWidget {
   @override
@@ -61,12 +61,17 @@ class PageOne extends StatelessWidget {
                               SizedBox(
                                 width: 8.0,
                               ),
-                              Consumer<CartViewModel>(
+                              Selector<CartViewModel, int>(
+                                  selector: (_, model) => model.triggerId,
+                                  shouldRebuild: (previous, next) {
+                                    return next == data[i].id;
+                                  },
                                   builder: (context, model, child) {
-                                return AddCartButton(
-                                  itemId: data[i].id,
-                                );
-                              }),
+                                    print("test");
+                                    return AddCartButton(
+                                      itemId: data[i].id,
+                                    );
+                                  }),
                               SizedBox(
                                 width: 8.0,
                               ),
