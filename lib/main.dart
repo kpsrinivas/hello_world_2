@@ -1,59 +1,22 @@
+import 'package:hello_world_2/cart.vm.dart';
+import 'package:hello_world_2/home.dart';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart' show ChangeNotifierProvider;
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  runApp(App());
 }
 
-class CurrentUser {
-  String name = "Srinivas";
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var currentUser = new CurrentUser();
-    currentUser.name = "Srinivas K";
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Column(
-        children: [
-          CurrentUserName(cu: currentUser),
-          ChangeUsernameButton(cu: currentUser)
-        ]
-      ),
+      darkTheme: ThemeData.dark(),
+      title: 'Compass Example',
+      home: ChangeNotifierProvider<CartViewModel>(
+          create: (_) => CartViewModel(), child: Home()),
     );
   }
 }
-
-class CurrentUserName extends StatelessWidget {
-  final CurrentUser cu;
-  const CurrentUserName({Key key, this.cu}): super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Text(cu.name);
-  }
-}
-
-class ChangeUsernameButton extends StatelessWidget {
-  final CurrentUser cu;
-  const ChangeUsernameButton({Key key, this.cu}): super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return FlatButton(
-      child: Text("Hit me to change name"),
-      onPressed: () {
-        cu.name = "Srinivas Kolluri";
-      },
-    );
-  }
-}
-
-
-
