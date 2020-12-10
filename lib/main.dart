@@ -13,7 +13,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       darkTheme: ThemeData.light(),
-      title: 'Compass Example',
+      title: 'Cart Example',
       home: ChangeNotifierProvider<CartViewModel>(
           create: (_) => CartViewModel(), child: Home()),
     );
