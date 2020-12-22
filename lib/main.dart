@@ -5,6 +5,21 @@ void main() {
   runApp(MyApp());
 }
 
+class Session with ChangeNotifier {
+  var isLogged = false;
+
+  login() {
+    //Go to backend, firebase
+    this.isLogged = true;
+    notifyListeners();
+  }
+
+  logout() {
+    this.isLogged = false;
+    notifyListeners();
+  }
+}
+
 class CurrentUser with ChangeNotifier {
   String name = "Srinivas";
 
@@ -26,15 +41,38 @@ class MyApp extends StatelessWidget {
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ChangeNotifierProvider(
-        create: (_) => new CurrentUser(),
-        child: Column(
-          children: [
-            CurrentUserName(),
-            ChangeUsernameButton()
-          ]
-        ),
+      home: 
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => new CurrentUser(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => new Session(),
+          )
+        ],
+
+        child: Consumer<Session>(
+          builder: (context, session, widget) {
+            if(session.isLogged) {
+              return Column(
+                children: [
+                  CurrentUserName(),
+                  ChangeUsernameButton()
+                ]
+              );
+            } else {
+              return FlatButton(
+                child: Text("Log me in"),
+                onPressed: (){
+                  Provider.of<Session>(context, listen: false).login();
+                }
+              );
+            }
+          }
+        )
       )
+      
     );
   }
 }
